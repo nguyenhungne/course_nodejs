@@ -6,6 +6,10 @@ const app = express();
 const port = 3000;
 
 const routes = require('./routes');
+const db = require('./config/db');
+
+//connect to DB:
+db.connect();
 
 // HTTP logger
 app.use(morgan('combined'));
