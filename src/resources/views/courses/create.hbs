@@ -1,0 +1,49 @@
+<div class="mt-4">
+    <h3>Đăng khóa học</h3>
+  <form method="POST" action="/courses/store">
+    <div class="form-group">
+      <label for="name">Tên khóa học</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Nhập tên khóa học"
+        name="name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="videoId">Nhập video id trên youtube</label>
+      <input
+        type="text"
+        class="form-control"
+        id="videoId"
+        placeholder="Nhập video id trên youtube"
+        name="videoId"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="level">Trình độ cần để học khóa học này</label>
+      <input
+        type="text"
+        class="form-control"
+        id="level"
+        placeholder="Nhập trình độ cần để học khóa học này"
+        name="level"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Mô tả về khóa học</label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        placeholder="Thêm mô tả về khóa học"
+        name="description"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+  </form>
+</div>
