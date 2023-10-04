@@ -1,0 +1,76 @@
+<div class="mt-4">
+  <h3>Khóa học của tôi</h3>
+
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tên</th>
+        <th scope="col">Trình độ</th>
+        <th scope="col">Thời gian tạo</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        {{#each courses}}
+      <tr>
+        <th scope="row">{{sum 1 @index}}</th>
+        <td>{{this.name}}</td>
+        <td>{{this.level}}</td>
+        <td>{{this.createdAt}}</td>
+        <td>
+            <a class="btn btn-link" href="/courses/{{this._id}}/edit">Sửa</a>
+            <a id="btn-delete-course" class="btn btn-link" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#delete-course-modal" href="/courses" >Xóa</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+{{!-- confirm delete course --}}
+<div id="delete-course-modal" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="confirm-delete" class="modal-title">Xác nhận</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có muốn xóa khóa học này?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-course-confirm" type="button" class="btn btn-danger">Xác nhận</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!--  delete form fake --}}
+
+<form name="delete-course-form" method="POST" ></form>
+
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", function() {
+    var id;
+    var deleteForm = document.forms['delete-course-form'];
+    
+    $('#delete-course-modal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    id = button.data('id');
+  })
+
+
+  var deleteCourseConfirm = document.getElementById('btn-delete-course-confirm');
+  deleteCourseConfirm.onclick = function() {
+      deleteForm.action = '/courses/' + id + '?_method=DELETE';
+      deleteForm.submit();
+  }
+
+
+  
+  });
+</script>

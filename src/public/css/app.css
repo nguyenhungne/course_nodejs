@@ -1,0 +1,8 @@
+h1 {
+  color: red; }
+
+.user-avatar {
+  width: 28px;
+  height: 28;
+  border-radius: 50%;
+  margin-right: 4px; }
